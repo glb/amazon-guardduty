@@ -144,11 +144,11 @@ def enable_ips_for_instance_in_ds(instance_in_ds):
   if instance_in_ds and ENABLE_MODULES and DSM:
     if "on" in instance_in_ds.overall_intrusion_prevention_status.lower():
       # IPS is already on, do nothing
-      print("IPS is already active for instance in DS {}".format(instance_in_ds.computer_name))
+      print("IPS is already active for instance in DS {}".format(instance_in_ds.name))
       result = "already enabled"
     else:
       # turn on the IPS via hostSettingGet() / hostSettingSet()
-      print("Enabling IPS for instance in DS {}".format(instance_in_ds.computer_name))
+      print("Enabling IPS for instance in DS {}".format(instance_in_ds.name))
       if DSM.policies.has_key(instance_in_ds.security_profile_id):
         DSM.policies[instance_in_ds.security_profile_id].intrusion_prevention_state = "ON"
         DSM.policies[instance_in_ds.security_profile_id].save()
@@ -165,11 +165,11 @@ def enable_am_for_instance_in_ds(instance_in_ds):
   if instance_in_ds and ENABLE_MODULES and DSM:
     if "on" in instance_in_ds.overall_anti_malware_status.lower():
       # Anti-malware is already on, do nothing
-      print("Anti-malware is already active for instance in DS {}".format(instance_in_ds.computer_name))
+      print("Anti-malware is already active for instance in DS {}".format(instance_in_ds.name))
       result = "already enabled"
     else:
       # turn on the anti-malware via hostSettingGet() / hostSettingSet()
-      print("Enabling anti-malware for instance in DS {}".format(instance_in_ds.computer_name))
+      print("Enabling anti-malware for instance in DS {}".format(instance_in_ds.name))
       if DSM.policies.has_key(instance_in_ds.security_profile_id):
         DSM.policies[instance_in_ds.security_profile_id].anti_malware_state = "ON"
         DSM.policies[instance_in_ds.security_profile_id].save()
@@ -186,11 +186,11 @@ def enable_im_for_instance_in_ds(instance_in_ds):
   if instance_in_ds and ENABLE_MODULES and DSM:
     if "on" in instance_in_ds.overall_integrity_monitoring_status.lower():
       # IPS is already on, do nothing
-      print("Integrity monitoring is already active for instance in DS {}".format(instance_in_ds.computer_name))
+      print("Integrity monitoring is already active for instance in DS {}".format(instance_in_ds.name))
       result = "already enabled"
     else:
       # turn on the IPS via hostSettingGet() / hostSettingSet()
-      print("Enabling IPS for instance in DS {}".format(instance_in_ds.computer_name))
+      print("Enabling IPS for instance in DS {}".format(instance_in_ds.name))
       if DSM.policies.has_key(instance_in_ds.security_profile_id):
         DSM.policies[instance_in_ds.security_profile_id].integrity_monitoring_state = "ON"
         DSM.policies[instance_in_ds.security_profile_id].save()
